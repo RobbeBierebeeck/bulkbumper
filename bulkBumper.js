@@ -3,6 +3,7 @@ import {program} from 'commander';
 import fs from 'fs';
 
 import packageJson from './package.json' assert {type: 'json'};
+import {exec} from 'child_process';
 
 const defineOptions = () => {
     program
@@ -19,6 +20,18 @@ const defineOptions = () => {
     program.parse();
 
     return program.opts();
+}
+
+const installDependencies = (directory) => {
+    exec('npm install',{
+        cwd: directory
+    },(err, stdout, stderr) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(stdout);
+    });
 }
 
 const updatePackage = async (file, filePath, options) => {
@@ -41,6 +54,7 @@ const loopAndBump = async (directory, maxDepth, options, depth = 0) => {
         } else if (stats.isFile()) {
             if (file === 'package.json') {
                 await updatePackage(file, filePath, options);
+                installDependencies(directory);
             }
         }
     }
