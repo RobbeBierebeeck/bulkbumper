@@ -47,6 +47,10 @@ const loopAndBump = async (directory, maxDepth, options, depth = 0) => {
         const filePath = `${directory}/${file}`;
         const stats = await fs.promises.stat(filePath);
 
+        if ( file === 'node_modules' || file === 'dist' || file === 'build' || file === 'coverage') {
+            continue;
+        }
+
         if (stats.isDirectory()) {
             if (depth < maxDepth) {
                 await loopAndBump(filePath, maxDepth, depth + 1);
