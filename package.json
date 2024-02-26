@@ -1,0 +1,29 @@
+{
+  "name": "bulkbumper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This package is for automatic dependency upgrades for a multiple repo project architecture.",
+  "main": "bulkBumper.js",
+  "scripts": {
+    "build": "esbuild bulkBumper.js --bundle --outfile=out.js"
+  },
+  "bin": {
+    "bulkbumper": "bin/bulkBumper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobbeBierebeeck/bulkbumper.git"
+  },
+  "author": "robbe.bierebeeck4@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobbeBierebeeck/bulkbumper/issues"
+  },
+  "homepage": "https://github.com/RobbeBierebeeck/bulkbumper#readme",
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.20.1"
+  }
+}
