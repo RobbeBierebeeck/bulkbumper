@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "description": "This package is for automatic dependency upgrades for a multiple repo project architecture.",
-  "main": "bulkBumper.js",
+  "main": "dist/bundle.js",
   "scripts": {
-    "build": "esbuild bulkBumper.js --bundle --outfile=out.js"
+    "build": "rollup -c"
   },
   "bin": {
-    "bulkbumper": "bin/bulkBumper.js"
+    "bulkbumper": "dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "commander": "^12.0.0"
   },
   "devDependencies": {
-    "esbuild": "0.20.1"
+    "@rollup/plugin-json": "^6.1.0",
+    "rollup": "^4.12.0"
   }
 }
